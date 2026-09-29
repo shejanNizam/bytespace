@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* @layer base {
+  body {
+    @apply antialiased;
+  }
+} */
+
+* {
+  box-sizing: border-box;
+}
+
+/* Tailwind v4 dark mode variant */
+@variant dark (&:is(.dark *));
+
+/* CSS Variables */
+:root {
+  --background: #ffffff;
+  --foreground: #000000;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+@theme inline {
+  --color-primary: #2563eb;
+  --color-secondary: #1183bd;
+
+  /* --font-sans: "Inter", sans-serif;
+  --font-mono: "Roboto Mono", monospace;
+  --font-raleway: var(--times-new-roman);
+  --font-raleway-bold: var(--times-new-roman-bold); */
+}
+
+/* for ignore tailwind */
+.no-tailwind * {
+  all: revert !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Auth showcase ambient motion                                              */
+/* -------------------------------------------------------------------------- */
+@keyframes auth-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(20px, -30px, 0) scale(1.06);
+  }
+}
+
+@keyframes auth-float-slow {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-24px, 20px, 0) scale(1.08);
+  }
+}
+
+.animate-auth-float {
+  animation: auth-float 14s ease-in-out infinite;
+}
+
+.animate-auth-float-slow {
+  animation: auth-float-slow 18s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-auth-float,
+  .animate-auth-float-slow {
+    animation: none;
+  }
+}
