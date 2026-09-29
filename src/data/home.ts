@@ -1,5 +1,3 @@
-import type { Course } from "@/types/course";
-
 /* -------------------------------------------------------------------------- */
 /*  Asset paths (files live in /public). Names mirror the Figma layer exports */
 /*  so they're easy to trace back to the design.                              */
@@ -7,7 +5,6 @@ import type { Course } from "@/types/course";
 const dir = "/assets/landing-page-assets";
 const banner = `${dir}/banner-assets`;
 const cta = `${dir}/unlock-your-potential-as-creator`;
-const course = `${dir}/course-images`;
 
 export const homeAssets = {
   logoLight: "/assets/main-logo/main-logo-with-name.png",
@@ -41,10 +38,6 @@ export const homeAssets = {
   },
 } as const;
 
-const studentAvatars = ["one", "two", "three", "four"].map(
-  (n) => `${course}/avatar/avatar-${n}.png`,
-);
-
 /* -------------------------------------------------------------------------- */
 /*  Navigation                                                                */
 /* -------------------------------------------------------------------------- */
@@ -59,7 +52,7 @@ export const footerLinkColumns = [
     { label: "Featured Courses", href: "/courses" },
     { label: "Featured Categories", href: "/courses" },
     { label: "Business", href: "/courses?category=Business" },
-    { label: "IT", href: "/courses?category=IT" },
+    { label: "IT", href: "/courses?category=IT%20%26%20Software" },
     { label: "Design", href: "/courses?category=Design" },
   ],
   [
@@ -82,91 +75,6 @@ export const legalLinks = [
   { label: "Privacy Policy", href: "/privacy" },
   { label: "Terms of Service", href: "/terms" },
   { label: "Cookies Settings", href: "/cookies" },
-];
-
-/* -------------------------------------------------------------------------- */
-/*  Courses                                                                   */
-/* -------------------------------------------------------------------------- */
-export const FEATURED_CATEGORY = "Featured";
-
-/** Chip rows exactly as laid out in the design (desktop keeps these breaks). */
-export const courseCategoryRows = [
-  [
-    FEATURED_CATEGORY,
-    "Music",
-    "Drawing & Painting",
-    "Marketing",
-    "Animation",
-    "Social Media",
-    "UI/UX Design",
-    "Creative Marketing",
-  ],
-  [
-    "Digital Illustration",
-    "Film & Video",
-    "Crafts",
-    "Freelance & Entrepreneurship",
-    "Graphic Design",
-    "Photography",
-  ],
-  ["Productivity", "Web Development", "Data Science", "Cooking"],
-];
-
-const courseDefaults = {
-  creator: "purepearl studio",
-  level: "Beginner",
-  rating: 4.5,
-  lessons: 17,
-  duration: "2 hours 16 mins",
-  comments: 59,
-  price: 25,
-  studentAvatars,
-  moreStudents: 26,
-} as const;
-
-export const featuredCourses: Course[] = [
-  {
-    ...courseDefaults,
-    id: "learn-figma-from-basic",
-    title: "Learn Figma from Basic",
-    image: `${course}/course-image-one.png`,
-    category: "UI/UX Design",
-  },
-  {
-    ...courseDefaults,
-    id: "build-digital-asset",
-    title: "Build Digital Asset",
-    image: `${course}/course-image-two.png`,
-    category: "Graphic Design",
-  },
-  {
-    ...courseDefaults,
-    id: "the-power-of-big-data",
-    title: "the Power of Big Data",
-    image: `${course}/course-image-three.png`,
-    category: "Data Science",
-  },
-  {
-    ...courseDefaults,
-    id: "balancing-productivity-and-wellbeing",
-    title: "Balancing Productivity and Wellbeing",
-    image: `${course}/course-image-four.png`,
-    category: "Productivity",
-  },
-  {
-    ...courseDefaults,
-    id: "mastering-money-management",
-    title: "Mastering Money Management",
-    image: `${course}/course-image-five.png`,
-    category: "Freelance & Entrepreneurship",
-  },
-  {
-    ...courseDefaults,
-    id: "from-idea-to-startup-success",
-    title: "From Idea to Startup Success",
-    image: `${course}/course-image-six.png`,
-    category: "Freelance & Entrepreneurship",
-  },
 ];
 
 /* -------------------------------------------------------------------------- */
