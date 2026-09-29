@@ -22,9 +22,16 @@ import { useDispatch, useSelector } from "react-redux";
 
 /* Routes whose first section is a brand-blue hero the bar can float over. */
 const isOverlayRoute = (pathname: string) =>
-  pathname === "/" || pathname.startsWith("/courses");
+  pathname === "/" ||
+  pathname.startsWith("/courses") ||
+  pathname.startsWith("/creators");
 
-export default function Navbar() {
+interface NavbarProps {
+  /** Force floating over a blue hero (e.g. the 404 page, whose URL is arbitrary). */
+  overlay?: boolean;
+}
+
+export default function Navbar({ overlay: forceOverlay }: NavbarProps = {}) {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
@@ -42,7 +49,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const overlay = isOverlayRoute(pathname);
+  const overlay = forceOverlay ?? isOverlayRoute(pathname);
   const solid = !overlay || scrolled;
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);

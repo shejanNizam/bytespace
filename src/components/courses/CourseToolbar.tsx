@@ -62,7 +62,10 @@ function FilterMenu({
     <Dropdown menu={menu} trigger={["click"]} placement="bottomLeft">
       <button
         type="button"
-        className={cn(pillClass, active && "border-brand bg-brand/5 text-brand")}
+        className={cn(
+          pillClass,
+          active && "border-brand bg-brand/5 text-brand",
+        )}
       >
         {icon}
         {label}
@@ -103,9 +106,7 @@ export default function CourseToolbar({
             { key: "all", label: "All levels" },
             ...courseLevels.map((level) => ({ key: level, label: level })),
           ]}
-          onSelect={(key) =>
-            onChange({ level: key as CourseFilters["level"] })
-          }
+          onSelect={(key) => onChange({ level: key as CourseFilters["level"] })}
         />
         <FilterMenu
           icon={<LuShapes aria-hidden />}

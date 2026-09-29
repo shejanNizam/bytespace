@@ -32,9 +32,9 @@ describe("filterCourses", () => {
   it("combines level and price filters", () => {
     const result = run({ level: "Advanced", price: "40-plus" });
     expect(result.length).toBeGreaterThan(0);
-    expect(
-      result.every((c) => c.level === "Advanced" && c.price > 40),
-    ).toBe(true);
+    expect(result.every((c) => c.level === "Advanced" && c.price > 40)).toBe(
+      true,
+    );
   });
 
   it("sorts by price and rating without mutating the input", () => {

@@ -16,9 +16,7 @@ export default function TabSection({
     <section className={cn("mt-10 first:mt-0", className)}>
       <h2 className="font-heading text-xl font-semibold text-ink">{title}</h2>
       {intro && (
-        <p className="mt-3 text-[15px] leading-[26px] text-ink-soft">
-          {intro}
-        </p>
+        <p className="mt-3 text-[15px] leading-[26px] text-ink-soft">{intro}</p>
       )}
       {children}
     </section>

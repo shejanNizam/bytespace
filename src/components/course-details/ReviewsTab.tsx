@@ -109,9 +109,7 @@ export default function ReviewsTab({ detail }: { detail: CourseDetail }) {
                       <p className="text-[15px] font-semibold text-ink">
                         {review.name}
                       </p>
-                      <p className="text-[13px] text-ink-soft">
-                        {review.role}
-                      </p>
+                      <p className="text-[13px] text-ink-soft">{review.role}</p>
                     </div>
                   </div>
                   <p className="shrink-0 text-[13px] text-ink-soft">

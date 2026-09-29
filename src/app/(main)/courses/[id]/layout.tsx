@@ -10,6 +10,9 @@ import { notFound } from "next/navigation";
 
 type Params = Promise<{ id: string }>;
 
+// Unknown ids 404 at routing time (a real 404 status, not a streamed 200).
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return courseCatalog.map((course) => ({ id: course.id }));
 }

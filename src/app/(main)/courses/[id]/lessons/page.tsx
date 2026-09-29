@@ -14,7 +14,11 @@ export async function generateMetadata({
   return detail ? { title: `Lessons · ${detail.headline}` } : {};
 }
 
-export default async function CourseLessonsPage({ params }: { params: Params }) {
+export default async function CourseLessonsPage({
+  params,
+}: {
+  params: Params;
+}) {
   const detail = getCourseDetail((await params).id);
   if (!detail) notFound();
   return <LessonsTab detail={detail} />;
