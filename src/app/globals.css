@@ -1,3 +1,7 @@
+/* antd styles are emitted into the `antd` layer (see <AntdRegistry layer>):
+   above Tailwind's preflight, below its utilities, so class names win. */
+@layer theme, base, antd, components, utilities;
+
 @import "tailwindcss";
 
 /* @layer base {
@@ -24,6 +28,15 @@
   --foreground: #f1f5f9;
 }
 
+/* antd colours every <a> with its link colour, which beats inherited colour.
+   Plain links inherit like Tailwind's preflight intends; antd's own link
+   components (class="ant-…") keep their styling. */
+@layer components {
+  a:not([class*="ant-"]) {
+    color: inherit;
+  }
+}
+
 body {
   background-color: var(--background);
   color: var(--foreground);
@@ -42,6 +55,9 @@ body {
   --color-ink: #242528;
   --color-ink-muted: #4b4c53;
   --color-line: #ebeced;
+  --color-ink-soft: #7c7f86; /* body paragraphs on white */
+  --color-surface: #f5f5f6; /* chips, logo strip, soft pills */
+  --color-lime-bright: #cbfc01; /* hero arc */
 
   --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
   --font-body: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
@@ -55,44 +71,6 @@ body {
 /* for ignore tailwind */
 .no-tailwind * {
   all: revert !important;
-}
-
-/* -------------------------------------------------------------------------- */
-/*  Auth showcase ambient motion                                              */
-/* -------------------------------------------------------------------------- */
-@keyframes auth-float {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(20px, -30px, 0) scale(1.06);
-  }
-}
-
-@keyframes auth-float-slow {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  50% {
-    transform: translate3d(-24px, 20px, 0) scale(1.08);
-  }
-}
-
-.animate-auth-float {
-  animation: auth-float 14s ease-in-out infinite;
-}
-
-.animate-auth-float-slow {
-  animation: auth-float-slow 18s ease-in-out infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-auth-float,
-  .animate-auth-float-slow {
-    animation: none;
-  }
 }
 
 /* -------------------------------------------------------------------------- */

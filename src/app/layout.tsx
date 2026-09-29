@@ -75,7 +75,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${urbanist.variable} antialiased`}
       >
         <StoreProvider>
-          <AntdRegistry>
+          <AntdRegistry layer>
             <ThemeProvider initialTheme={initialTheme}>
               <div className="min-h-screen bg-white dark:bg-[#12203b] transition-colors duration-300">
                 {children}
