@@ -1,3 +1,4 @@
+import CourseBackButton from "@/components/course-details/CourseBackButton";
 import ShareButton from "@/components/course-details/ShareButton";
 import LevelIcon from "@/components/shared/LevelIcon";
 import type { CourseDetail } from "@/types/course";
@@ -19,8 +20,14 @@ export default function CourseHeader({ detail }: { detail: CourseDetail }) {
   ];
 
   return (
-    <div className="flex flex-col-reverse items-start gap-6 text-white sm:flex-row sm:justify-between">
-      <div className="min-w-0">
+    <div>
+      {/* Top action row: Back Navigation & Share */}
+      <div className="mb-6 flex items-center justify-between gap-4">
+        <CourseBackButton />
+        <ShareButton title={detail.headline} />
+      </div>
+
+      <div className="min-w-0 text-white">
         <h1 className="font-heading text-[26px] font-semibold leading-tight sm:text-[32px] sm:leading-10">
           {detail.headline}
         </h1>
@@ -44,7 +51,6 @@ export default function CourseHeader({ detail }: { detail: CourseDetail }) {
           ))}
         </ul>
       </div>
-      <ShareButton title={detail.headline} />
     </div>
   );
 }
