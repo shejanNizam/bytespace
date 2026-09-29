@@ -4,6 +4,8 @@ import AuthHeader, {
   authLabel,
   authPrimaryBtn,
 } from "@/components/auth/AuthHeader";
+import AuthCard from "@/components/auth/AuthCard";
+import AuthShell from "@/components/auth/AuthShell";
 import { App, Button, Form, Input } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -31,56 +33,61 @@ const ForgotPassword: React.FC = () => {
   };
 
   return (
-    <>
-      <AuthHeader
-        title="Forgot password?"
-        subtitle="Enter your email and we'll send you a code to reset it."
-      />
+    <AuthShell
+      heading="Reset in a few steps"
+      description="Enter the email linked to your account and we will send you a code to get you back to learning."
+    >
+      <AuthCard>
+        <AuthHeader
+          title="Forgot password?"
+          subtitle="Enter your email and we'll send you a code to reset it."
+        />
 
-      <Form
-        form={form}
-        layout="vertical"
-        onFinish={onFinish}
-        requiredMark={false}
-      >
-        <Form.Item<ForgotPasswordFormValues>
-          label={<span className={authLabel}>Email address</span>}
-          name="email"
-          rules={[
-            { type: "email", message: "Please enter a valid email address" },
-            { required: true, message: "Email is required" },
-          ]}
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={onFinish}
+          requiredMark={false}
         >
-          <Input
-            size="large"
-            prefix={<FiMail className="mr-1 text-slate-400" />}
-            placeholder="you@example.com"
-            autoComplete="email"
-          />
-        </Form.Item>
-
-        <Button
-          type="primary"
-          htmlType="submit"
-          size="large"
-          block
-          loading={isLoading}
-          className={authPrimaryBtn}
-        >
-          {isLoading ? "Sending..." : "Send reset code"}
-        </Button>
-
-        <p className="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
-          Remembered your password?{" "}
-          <Link
-            href="/login"
-            className="font-semibold text-primary hover:opacity-80 transition-opacity"
+          <Form.Item<ForgotPasswordFormValues>
+            label={<span className={authLabel}>Email address</span>}
+            name="email"
+            rules={[
+              { type: "email", message: "Please enter a valid email address" },
+              { required: true, message: "Email is required" },
+            ]}
           >
-            Back to sign in
-          </Link>
-        </p>
-      </Form>
-    </>
+            <Input
+              size="large"
+              prefix={<FiMail className="mr-1 text-slate-400" />}
+              placeholder="you@example.com"
+              autoComplete="email"
+            />
+          </Form.Item>
+
+          <Button
+            type="primary"
+            htmlType="submit"
+            size="large"
+            block
+            loading={isLoading}
+            className={authPrimaryBtn}
+          >
+            {isLoading ? "Sending..." : "Send reset code"}
+          </Button>
+
+          <p className="mt-8 text-center text-sm text-slate-600 dark:text-slate-400">
+            Remembered your password?{" "}
+            <Link
+              href="/login"
+              className="font-semibold text-primary hover:opacity-80 transition-opacity"
+            >
+              Back to sign in
+            </Link>
+          </p>
+        </Form>
+      </AuthCard>
+    </AuthShell>
   );
 };
 

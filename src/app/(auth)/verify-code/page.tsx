@@ -1,6 +1,8 @@
 "use client";
 
 import AuthHeader, { authPrimaryBtn } from "@/components/auth/AuthHeader";
+import AuthCard from "@/components/auth/AuthCard";
+import AuthShell from "@/components/auth/AuthShell";
 import { App, Button, Input, InputRef } from "antd";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -182,9 +184,16 @@ function VerifyCodeLoading() {
 
 const VerifyCode: React.FC = () => {
   return (
-    <Suspense fallback={<VerifyCodeLoading />}>
-      <VerifyCodeContent />
-    </Suspense>
+    <AuthShell
+      heading="Check your inbox"
+      description="We sent a 6-digit code to your email. Enter it below to confirm it is really you."
+    >
+      <AuthCard>
+        <Suspense fallback={<VerifyCodeLoading />}>
+          <VerifyCodeContent />
+        </Suspense>
+      </AuthCard>
+    </AuthShell>
   );
 };
 

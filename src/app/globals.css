@@ -36,6 +36,16 @@ body {
   --color-primary: #2563eb;
   --color-secondary: #1183bd;
 
+  /* ByteSpace design palette (Figma) */
+  --color-brand: #003be2;
+  --color-lime: #d4fb20;
+  --color-ink: #242528;
+  --color-ink-muted: #4b4c53;
+  --color-line: #ebeced;
+
+  --font-heading: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-urbanist), ui-sans-serif, system-ui, sans-serif;
+
   /* --font-sans: "Inter", sans-serif;
   --font-mono: "Roboto Mono", monospace;
   --font-raleway: var(--times-new-roman);
@@ -81,6 +91,34 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .animate-auth-float,
   .animate-auth-float-slow {
+    animation: none;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Decorative 3D shapes — gentle bob                                         */
+/* -------------------------------------------------------------------------- */
+@keyframes shape-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) rotate(3deg);
+  }
+}
+
+.animate-shape-float {
+  animation: shape-float 6s ease-in-out infinite;
+}
+
+.animate-shape-float-slow {
+  animation: shape-float 8s ease-in-out infinite reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-shape-float,
+  .animate-shape-float-slow {
     animation: none;
   }
 }

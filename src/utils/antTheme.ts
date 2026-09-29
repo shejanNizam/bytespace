@@ -1,4 +1,4 @@
-import type { ThemeConfig } from "antd";
+import { theme, type ThemeConfig } from "antd";
 
 /* -------------------------------------------------------------------------- */
 /*  Brand palette — single source of truth. Change colors here first.         */
@@ -316,6 +316,50 @@ export const darkTheme: ThemeConfig = {
       colorTextHeading: dark.textBase,
       padding: 24,
       borderRadius: 8,
+    },
+  },
+};
+
+/* -------------------------------------------------------------------------- */
+/*  AUTH THEME — scoped to the (auth) pages. The Figma auth screens are a     */
+/*  white card on brand blue in every mode, so this does not inherit the      */
+/*  app's light/dark tokens.                                                  */
+/* -------------------------------------------------------------------------- */
+const auth = {
+  brand: "#003BE2",
+  ink: "#242528",
+  line: "#EBECED",
+  placeholder: "#878A92",
+} as const;
+
+export const authTheme: ThemeConfig = {
+  inherit: false,
+  algorithm: theme.defaultAlgorithm,
+  token: {
+    colorPrimary: auth.brand,
+    colorLink: auth.brand,
+    colorText: auth.ink,
+    colorTextPlaceholder: auth.placeholder,
+    colorBorder: auth.line,
+    colorBgContainer: "#ffffff",
+    colorError: brand.error,
+    fontFamily: "var(--font-urbanist), ui-sans-serif, system-ui, sans-serif",
+    borderRadius: 10,
+  },
+  components: {
+    Form: {
+      labelColor: auth.ink,
+      labelFontSize: 14,
+      verticalLabelPadding: "0 0 6px",
+      itemMarginBottom: 20,
+    },
+    Input: {
+      controlHeightLG: 52,
+      paddingInlineLG: 22,
+      fontSizeLG: 16,
+      hoverBorderColor: "#9db3f6",
+      activeBorderColor: auth.brand,
+      activeShadow: "0 0 0 3px rgba(0, 59, 226, 0.1)",
     },
   },
 };
