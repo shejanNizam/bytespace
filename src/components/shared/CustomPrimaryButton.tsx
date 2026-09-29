@@ -1,3 +1,4 @@
+import { cn } from "@/utils/cn";
 import Link from "next/link";
 import React from "react";
 
@@ -21,13 +22,14 @@ interface CustomPrimaryButtonProps {
 
 const sizeClasses: Record<ButtonSize, string> = {
   sm: "h-10 px-5 text-sm",
-  md: "h-12 px-7 text-sm sm:text-base",
-  lg: "h-12 sm:h-13 md:h-14 px-8 text-base md:text-lg",
+  md: "h-11 px-[26px] text-base",
+  lg: "h-12 px-8 text-lg",
 };
 
+/** Lime pill CTA from the ByteSpace design. */
 export default function CustomPrimaryButton({
   children,
-  className = "",
+  className,
   onClick,
   type = "button",
   disabled = false,
@@ -36,34 +38,20 @@ export default function CustomPrimaryButton({
   block = false,
   icon,
 }: CustomPrimaryButtonProps) {
-  const classes = [
-    // layout
-    "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-semibold whitespace-nowrap select-none",
-    // brand gradient — weighted toward primary so white text stays high-contrast
-    "bg-linear-to-r from-primary via-primary to-secondary text-white!",
-    // depth
-    "shadow-lg shadow-primary/30 ring-1 ring-inset ring-white/15",
-    // motion
-    "transition-all duration-300 hover:shadow-primary/50 hover:brightness-110 active:scale-95",
-    // disabled
-    "disabled:cursor-not-allowed disabled:opacity-50 disabled:shadow-none disabled:hover:brightness-100 disabled:active:scale-100",
-    "cursor-pointer touch-manipulation",
+  const classes = cn(
+    "inline-flex cursor-pointer touch-manipulation select-none items-center justify-center gap-2 whitespace-nowrap rounded-full bg-lime font-medium text-ink",
+    "transition-[filter,transform] duration-200 hover:brightness-95 active:scale-[0.97]",
+    "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
+    "disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:brightness-100 disabled:active:scale-100",
     sizeClasses[size],
-    block ? "w-full" : "",
+    block && "w-full",
     className,
-  ]
-    .filter(Boolean)
-    .join(" ");
+  );
 
-  // Sliding sheen that sweeps across on hover for a premium feel.
   const content = (
     <>
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -translate-x-full bg-linear-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 ease-out group-hover:translate-x-full"
-      />
-      {icon && <span className="relative text-[1.1em]">{icon}</span>}
-      <span className="relative">{children}</span>
+      {icon && <span className="text-[1.1em]">{icon}</span>}
+      {children}
     </>
   );
 

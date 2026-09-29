@@ -19,7 +19,7 @@ export default function AuthShell({
   children,
 }: AuthShellProps) {
   return (
-    <div className="mt-8 grid items-start gap-8 lg:mt-14 lg:grid-cols-[minmax(0,530px)_minmax(0,579px)] lg:justify-between lg:gap-10">
+    <div className="mt-8 grid grid-cols-1 items-start gap-8 lg:mt-14 lg:grid-cols-[minmax(0,530px)_minmax(0,579px)] lg:justify-between lg:gap-10">
       <div className="mx-auto w-full max-w-[579px] lg:mx-0 lg:pt-2.5">
         <p className="font-heading text-xl font-semibold text-white">
           {heading}
