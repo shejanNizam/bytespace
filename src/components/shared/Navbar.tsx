@@ -21,7 +21,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 /* Routes whose first section is a brand-blue hero the bar can float over. */
-const overlayRoutes = ["/"];
+const isOverlayRoute = (pathname: string) =>
+  pathname === "/" || pathname.startsWith("/courses");
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +42,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const overlay = overlayRoutes.includes(pathname);
+  const overlay = isOverlayRoute(pathname);
   const solid = !overlay || scrolled;
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);
