@@ -24,8 +24,11 @@ import { useCallback, useMemo, useRef } from "react";
 const PAGE_SIZE = 18;
 
 /* Only accept known values from the URL; anything else falls back. */
-const oneOf = <T extends string>(value: string | null, allowed: T[], fallback: T) =>
-  value && (allowed as string[]).includes(value) ? (value as T) : fallback;
+const oneOf = <T extends string>(
+  value: string | null,
+  allowed: T[],
+  fallback: T,
+) => (value && (allowed as string[]).includes(value) ? (value as T) : fallback);
 
 function parseFilters(params: URLSearchParams): CourseFilters {
   const d = defaultCourseFilters;
@@ -54,7 +57,10 @@ export default function CourseBrowser() {
   const resultsRef = useRef<HTMLDivElement>(null);
 
   const filters = useMemo(() => parseFilters(params), [params]);
-  const results = useMemo(() => filterCourses(courseCatalog, filters), [filters]);
+  const results = useMemo(
+    () => filterCourses(courseCatalog, filters),
+    [filters],
+  );
 
   const totalPages = Math.max(1, Math.ceil(results.length / PAGE_SIZE));
   const page = Math.min(
@@ -86,7 +92,10 @@ export default function CourseBrowser() {
     resultsRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const onSearch = useCallback((search: string) => update({ search }), [update]);
+  const onSearch = useCallback(
+    (search: string) => update({ search }),
+    [update],
+  );
 
   return (
     <>
@@ -99,7 +108,10 @@ export default function CourseBrowser() {
 
       <section className="bg-white pb-20 pt-12 lg:pb-[120px] lg:pt-20">
         <Container>
-          <CourseToolbar filters={filters} onChange={(patch) => update(patch)} />
+          <CourseToolbar
+            filters={filters}
+            onChange={(patch) => update(patch)}
+          />
 
           <CategoryChips
             layout="scroll"
