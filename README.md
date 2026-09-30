@@ -1,16 +1,6 @@
-# ByteSpace — Figma Design Implementation & Reviewer Roadmap
+## ByteSpace — Figma Design Implementation & Reviewer Roadmap
 
 A pixel-faithful, responsive web application implementation for **ByteSpace**, engineered strictly according to the official **Figma UI/UX Design Specifications**. Built using **Next.js 15 (App Router)**, **TypeScript**, and **Tailwind CSS**.
-
----
-
-## 🎨 Full Figma Design Artboards
-
-Below is the complete Figma design board detailing all 9 core screens and application states:
-
-![ByteSpace Full Figma Design Board](./public/assets/figma/bytespace-figma-design.png)
-
-> **Asset Location:** The full high-resolution design image is archived in the repository at [`./public/assets/figma/bytespace-figma-design.png`](./public/assets/figma/bytespace-figma-design.png).
 
 ---
 
