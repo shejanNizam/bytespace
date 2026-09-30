@@ -20,7 +20,7 @@ export default function LoginForm() {
     setTimeout(() => {
       setIsLoading(false);
       message.success("Logged in (demo).");
-      router.push("/user-dashboard");
+      router.push("/");
     }, 500);
   };
 
